@@ -1,9 +1,5 @@
 const { Writable } = require('stream');
 
-module.exports = {
-	waitFor,
-	WritableBufferStream
-};
 
 async function waitFor(job) {
 	while (job.done != true) { await new Promise(r => setTimeout(r, 100)); }
@@ -22,3 +18,8 @@ class WritableBufferStream extends Writable {
 		return Buffer.concat(this._chunks);
 	}
 }
+
+module.exports = {
+	waitFor,
+	WritableBufferStream
+};
